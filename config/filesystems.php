@@ -6,26 +6,14 @@ return [
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
     |--------------------------------------------------------------------------
-    |
-    | Here you may specify the default filesystem disk that should be used
-    | by the framework. The "local" disk, as well as a variety of cloud
-    | based disks are available to your application. Just store away!
-    |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'public'),
 
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
     |--------------------------------------------------------------------------
-    |
-    | Here you may configure as many filesystem "disks" as you wish, and you
-    | may even configure multiple disks of the same driver. Defaults have
-    | been set up for each driver as an example of the required values.
-    |
-    | Supported Drivers: "local", "ftp", "sftp", "s3"
-    |
     */
 
     'disks' => [
@@ -36,10 +24,11 @@ return [
             'throw' => false,
         ],
 
+        // Dosyalar doğrudan public/uploads klasörüne gidecek
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path('uploads'), // Fiziksel yol
+            'url' => env('APP_URL').'/uploads', // URL öneki
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -63,14 +52,14 @@ return [
     | Symbolic Links
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the symbolic links that will be created when the
-    | `storage:link` Artisan command is executed. The array keys should be
-    | the locations of the links and the values should be their targets.
+    | storage:link komutu ile oluşturulacak sembolik linkler.
+    | uploads doğrudan public altında olduğu için gerek kalmadı.
     |
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        // Klasik yapı devam ederse bu aktif olabilir:
+        // public_path('storage') => storage_path('app/public'),
     ],
 
 ];
