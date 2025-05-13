@@ -60,6 +60,7 @@
 @push("js")
     <script src="{{ asset('assets/admin/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     @vite([
-    "resources/js/admin/service/fetch-services-datatable.js"
+    "resources/js/admin/service/fetch-services-datatable.js",
+    "resources/js/admin/service/service-destroy.js",
 ])
 @endpush

@@ -33,6 +33,7 @@ Route::middleware('auth')->as("admin.")->group(function () {
         Route::post("/store", [ServiceController::class, "store"])->name("store");
         Route::get("/create", [ServiceController::class, "create"])->name("create");
         Route::get("/{service_uuid}", [ServiceController::class, "show"])->name("show");
+        Route::delete("/destroy/{service_uuid}", [ServiceController::class, "destroy"])->name("destroy");
     });
 
     Route::prefix('site-setting')->as('site_setting.')->group(callback: function (){

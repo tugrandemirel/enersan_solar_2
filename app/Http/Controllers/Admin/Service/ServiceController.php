@@ -13,6 +13,7 @@ use App\Models\Service;
 use App\Models\ServiceStatus;
 use App\Models\User;
 use App\Service\ServiceDatatableService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -55,7 +56,7 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ServiceStoreRequest $request)
+    public function store(ServiceStoreRequest $request): JsonResponse
     {
         $attributes = collect($request->validated());
 
@@ -137,7 +138,7 @@ class ServiceController extends Controller
             $route = route("admin.services.show", ["service_uuid" => $service->uuid]);
             return ResponseHelper::success('İşleminiz başarılı bir şekilde gerçekleştirildi', ["route" => $route]);
         } catch (\Exception $exception) {
-            DB::rollBack(); dd($exception->getMessage());
+            DB::rollBack();
             return ResponseHelper::error('Bir hata oluştu.', [$exception->getMessage()]);
         }
     }
@@ -164,7 +165,6 @@ class ServiceController extends Controller
 
             return view(self::PATH . "show", compact("service"));
         } catch (\Exception $exception) {
-            dd($exception->getMessage());
             abort(404);
         }
     }
@@ -188,8 +188,38 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $service_uuid)
     {
-        //
+        DB::beginTransaction();
+        try {
+
+            $service = Service::query()
+                ->with([
+                    "image:id,service_id,file_name,file_ext,path",
+                    "documents:id,service_id,file_name,file_ext,path"
+                ])
+                ->where("uuid", $service_uuid)
+                ->first();
+
+            $image = $service->image;
+            if ($image) {
+                FileHelper::deleteFile($image->path);
+                $image->delete();
+            }
+            $documents = $service->documents;
+            if ($documents) {
+                foreach ($documents as $document) {
+                    FileHelper::deleteFile($document->path);
+                    $document->delete();
+                }
+            }
+            $service->delete();
+
+            DB::commit();
+            return ResponseHelper::success('İşleminiz başarılı bir şekilde gerçekleştirildi');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return ResponseHelper::error('Bir hata oluştu.', [$exception->getMessage()]);
+        }
     }
 }

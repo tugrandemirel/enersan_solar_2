@@ -18,12 +18,10 @@ KTUtil.addEvent(btn, "click", function () {
                 if (response.status === 200) {
                     let { route } = response.data.data
                     success(response)
-                    console.log(response, route)
                     window.location.href = route
                 }
             })
             .catch(function (errors) {
-                console.log(errors)
                 error(errors)
             })
             .finally(function () {

@@ -123,6 +123,6 @@
     "resources/js/admin/select2.js",
     "resources/js/admin/summernote.js",
     "resources/js/admin/file.js",
-    "resources/js/admin/service/setting-store.js",
+    "resources/js/admin/service/service-store.js",
 ])
 @endpush

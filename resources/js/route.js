@@ -15,6 +15,7 @@ const routes = {
             store: "/admin/services/store",
             index: "/admin/services",
             show: "/admin/services/",
+            destroy: "/admin/services/destroy/{service_uuid}",
         }
     }
 };

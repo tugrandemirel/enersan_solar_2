@@ -24,7 +24,7 @@ export default defineConfig({
                 /* START SERVICE*/
 
                 "resources/js/admin/service/fetch-services-datatable.js",
-                "resources/js/admin/service/setting-store.js",
+                "resources/js/admin/service/service-store.js",
             ],
             refresh: true,
         }),
