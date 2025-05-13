@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\Project\ProjectController;
 use App\Http\Controllers\Admin\Service\ServiceController;
 use App\Http\Controllers\Admin\SiteSetting\ContactSettingController;
 use App\Http\Controllers\Admin\SiteSetting\GeneralSettingController;
@@ -20,11 +21,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->as("admin.")->group(function () {
     Route::get("/", [IndexController::class, "index"])->name("index");
 
@@ -34,6 +30,14 @@ Route::middleware('auth')->as("admin.")->group(function () {
         Route::get("/create", [ServiceController::class, "create"])->name("create");
         Route::get("/{service_uuid}", [ServiceController::class, "show"])->name("show");
         Route::delete("/destroy/{service_uuid}", [ServiceController::class, "destroy"])->name("destroy");
+    });
+
+    Route::prefix("projects")->as("projects.")->group(callback: function () {
+        Route::any("/", [ProjectController::class, "index"])->name("index");
+        Route::post("/store", [ProjectController::class, "store"])->name("store");
+        Route::get("/create", [ProjectController::class, "create"])->name("create");
+        Route::get("/{project_uuid}", [ProjectController::class, "show"])->name("show");
+        Route::delete("/destroy/{project_uuid}", [ProjectController::class, "destroy"])->name("destroy");
     });
 
     Route::prefix('site-setting')->as('site_setting.')->group(callback: function (){

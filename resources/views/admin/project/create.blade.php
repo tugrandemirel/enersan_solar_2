@@ -1,7 +1,7 @@
 @extends("admin.layouts.app")
-@section('title', 'Hizmetlerimiz')
+@section('title', 'Projeler')
 @php
-    $servicesToggle = "active";
+    $projectToggle = "active";
 @endphp
 @section("content")
     <!--begin::Subheader-->
@@ -12,7 +12,7 @@
 
                 <!--begin::Page Title-->
                 <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">
-                    Hizmetlerimiz
+                    Projeler
                 </h5>
                 <!--end::Page Title-->
 
@@ -32,7 +32,7 @@
             <div class="d-flex align-items-center">
                 <!--begin::Actions-->
 
-                <a href="{{ route("admin.services.index") }}" class="btn btn-secondary font-weight-bolder mr-2">
+                <a href="{{ route("admin.projects.index") }}" class="btn btn-secondary font-weight-bolder mr-2">
                     <i class="ki ki-long-arrow-back icon-sm"></i>
                     <span class="d-none d-sm-inline-block">Geri</span>
 
@@ -46,21 +46,21 @@
     <div class="card card-custom shadow-none card-transparent">
         <!--begin::Body-->
         <div class="card-body bg-white border-bottom border-left border-right p-5">
-            <form id="create_service_form">
+            <form id="create_project_form">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="service_name">Hizmet Adı</label>
-                            <input type="text" class="form-control" id="service_name" name="service_name" placeholder="Hizmet Adı">
+                            <label for="project_name">Proje Adı</label>
+                            <input type="text" class="form-control" id="project_name" name="project_name" placeholder="Proje Adı">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="service_status">Hizmet Durumu</label>
-                            <select class="form-control select-without-search" id="service_status" name="service_status">
+                            <label for="project_status">Proje Durumu</label>
+                            <select class="form-control select-without-search" id="project_status" name="project_status">
                                 <option value="" disabled selected>Seçiniz</option>
-                                @foreach($service_statuses as $service_status)
-                                    <option value="{{ $service_status?->code }}">{{ $service_status?->name }}</option>
+                                @foreach($project_statuses as $project_status)
+                                    <option value="{{ $project_status?->code }}">{{ $project_status?->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -69,7 +69,7 @@
                 <div class="row border">
                     <!-- Görsel yükleme alanı -->
                     <div class="col-md-4 mb-4">
-                        <label>Görsel Yükle</label>
+                        <label>Kapak Görseli Yükle</label>
                         <div class="file-upload-wrapper">
                             <button type="button" class="btn btn-primary btn-block upload-btn">Görsel Yükle</button>
                             <input type="file" name="image" accept="image/*" class="d-none file-input" data-type="image">
@@ -97,18 +97,27 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <label>Çoklu Görseller Yükle</label>
+                        <div class="file-upload-wrapper" id="multiple-images-wrapper">
+                            <button type="button" class="btn btn-info btn-block upload-multiple-btn">Görselleri Yükle</button>
+                            <input type="file" name="multiple_images[]" accept="image/*" class="d-none multiple-images-input" multiple>
+                            <div class="multiple-preview d-flex flex-wrap gap-3 mt-3"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="form-label">Hizmet İçeriği:</label>
+                            <label class="form-label">Proje İçeriği:</label>
                             <textarea name="content" class="summernote form-control" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
             </form>
             <div class="d-flex justify-content-end">
-                <button type="button" id="create_service_btn" class="btn btn-primary mr-2">Kaydet</button>
+                <button type="button" id="create_project_btn" class="btn btn-primary mr-2">Kaydet</button>
                 <button type="reset" class="btn btn-secondary">İptal</button>
             </div>
         </div>
@@ -123,6 +132,6 @@
     "resources/js/admin/select2.js",
     "resources/js/admin/summernote.js",
     "resources/js/admin/file.js",
-    "resources/js/admin/service/service-store.js",
+    "resources/js/admin/project/project-store.js",
 ])
 @endpush

@@ -22,9 +22,15 @@ export default defineConfig({
                 /* END SITE SETTING */
 
                 /* START SERVICE*/
-
                 "resources/js/admin/service/fetch-services-datatable.js",
                 "resources/js/admin/service/service-store.js",
+                /* END SERVICE*/
+
+                /* START PROJECT*/
+
+                "resources/js/admin/project/fetch-project-datatable.js",
+                "resources/js/admin/project/project-destroy.js",
+                "resources/js/admin/project/project-store.js",
             ],
             refresh: true,
         }),

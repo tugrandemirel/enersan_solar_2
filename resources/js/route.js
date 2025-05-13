@@ -12,11 +12,17 @@ const routes = {
             },
         },
         services: {
-            store: "/admin/services/store",
             index: "/admin/services",
-            show: "/admin/services/",
+            store: "/admin/services/store",
+            show: "/admin/services/{service_uuid}",
             destroy: "/admin/services/destroy/{service_uuid}",
-        }
+        },
+        projects: {
+            index: "/admin/projects",
+            store: "/admin/projects/store",
+            show: "/admin/projects/{project_uuid}",
+            destroy: "/admin/projects/destroy/{project_uuid}",
+        },
     }
 };
 

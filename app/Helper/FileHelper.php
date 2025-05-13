@@ -38,6 +38,12 @@ class FileHelper
             return true;
         }
 
+        $newFilePath = str_replace("uploads/", "", $filePath);
+        if (Storage::disk('public')->exists($newFilePath)) {
+            Storage::disk('public')->delete($newFilePath);
+            return true;
+        }
+
         return false;
     }
 

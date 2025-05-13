@@ -161,6 +161,10 @@ class ServiceController extends Controller
                 ->where("uuid", $service_uuid)
                 ->first();
 
+            if (!$service) {
+                abort(404);
+            }
+
             $service->created_at_formatted = DateHelper::full($service->created_at);
 
             return view(self::PATH . "show", compact("service"));
