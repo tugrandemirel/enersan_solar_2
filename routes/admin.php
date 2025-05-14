@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SiteSetting\SiteSettingController;
 use App\Http\Controllers\Admin\SiteSetting\SocialMediaSettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReferenceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,15 @@ Route::middleware('auth')->as("admin.")->group(function () {
         Route::get("/edit/{slider_uuid}", [SliderController::class, "edit"])->name("edit");
         Route::get("/{slider_uuid}", [SliderController::class, "show"])->name("show");
         Route::delete("/destroy/{slider_uuid}", [SliderController::class, "destroy"])->name("destroy");
+    });
+
+    Route::prefix("references")->as("references.")->group(callback: function () {
+        Route::any("/", [ReferenceController::class, "index"])->name("index");
+        Route::post("/store", [ReferenceController::class, "store"])->name("store");
+        Route::get("/create", [ReferenceController::class, "create"])->name("create");
+        Route::get("/edit/{reference_uuid}", [ReferenceController::class, "edit"])->name("edit");
+        Route::get("/{reference_uuid}", [ReferenceController::class, "show"])->name("show");
+        Route::delete("/destroy/{reference_uuid}", [ReferenceController::class, "destroy"])->name("destroy");
     });
 
     Route::prefix('site-setting')->as('site_setting.')->group(callback: function (){

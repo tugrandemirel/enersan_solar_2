@@ -29,6 +29,12 @@ const routes = {
             show: "/admin/sliders/{slider_uuid}",
             destroy: "/admin/sliders/destroy/{slider_uuid}",
         },
+        references: {
+            index: "/admin/references",
+            store: "/admin/references/store",
+            show: "/admin/references/{reference_uuid}",
+            destroy: "/admin/sliders/destroy/{reference_uuid}",
+        },
     }
 };
 
