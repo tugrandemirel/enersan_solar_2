@@ -5,6 +5,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                /* START GENERAL */
                 'resources/css/app.css',
                 "resources/css/custom.css",
                 'resources/js/app.js',
@@ -12,6 +13,7 @@ export default defineConfig({
                 "resources/js/admin/select2.js",
                 "resources/js/admin/summernote.js",
                 "resources/js/admin/file.js",
+                /* END GENERAL */
 
                 /*START SITE SETTING */
                 "resources/js/admin/site-setting/general-setting/update.js",
@@ -27,10 +29,16 @@ export default defineConfig({
                 /* END SERVICE*/
 
                 /* START PROJECT*/
-
                 "resources/js/admin/project/fetch-project-datatable.js",
                 "resources/js/admin/project/project-destroy.js",
                 "resources/js/admin/project/project-store.js",
+                /* END PROJECT*/
+
+                /* START SLIDER */
+                "resources/js/admin/slider/fetch-sliders-datatable.js",
+                "resources/js/admin/slider/slider-store.js",
+                "resources/js/admin/slider/slider-destroy.js",
+                /* END SLIDER */
             ],
             refresh: true,
         }),

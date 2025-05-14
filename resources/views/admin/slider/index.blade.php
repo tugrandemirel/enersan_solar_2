@@ -1,7 +1,7 @@
 @extends("admin.layouts.app")
-@section('title', 'Hizmetlerimiz')
+@section('title', 'Slider')
 @php
-    $servicesToggle = "active";
+    $sliderToggle = "active";
 @endphp
 @push('css')
     <link href="{{ asset('assets/admin/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -15,7 +15,7 @@
 
                 <!--begin::Page Title-->
                 <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">
-                    Hizmetlerimiz
+                    Slider
                 </h5>
                 <!--end::Page Title-->
 
@@ -35,7 +35,7 @@
             <div class="d-flex align-items-center">
                 <!--begin::Actions-->
 
-                <a href="{{ route("admin.services.create") }}" class="btn btn-light-success font-weight-bolder btn-sm">
+                <a href="#" data-toggle="modal" data-target="#sliderCreateModal" class="btn btn-light-success font-weight-bolder btn-sm">
                     <i class="fa fa-plus"></i>
                     <span class="d-none d-sm-inline-block">Yeni Ekle</span>
 
@@ -51,16 +51,19 @@
         <!--begin::Body-->
         <div class="card-body bg-white border-bottom border-left border-right p-5">
             <!--begin::Table-->
-            @include("admin.service.partials.fetch-services-datatable")
+            @include("admin.slider.partials.fetch-sliders-datatable")
         </div>
         <!--end::Body-->
     </div>
     <!--end::Subheader-->
+    @includeIf("admin.slider.partials.slider-create-modal")
 @endsection
 @push("js")
     <script src="{{ asset('assets/admin/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     @vite([
-    "resources/js/admin/service/fetch-services-datatable.js",
-    "resources/js/admin/service/slider-destroy.js",
+    "resources/js/admin/slider/fetch-sliders-datatable.js",
+    "resources/js/admin/slider/slider-store.js",
+    "resources/js/admin/slider/slider-destroy.js",
+    "resources/js/admin/file.js",
 ])
 @endpush

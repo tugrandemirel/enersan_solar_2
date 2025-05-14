@@ -23,6 +23,12 @@ const routes = {
             show: "/admin/projects/{project_uuid}",
             destroy: "/admin/projects/destroy/{project_uuid}",
         },
+        sliders: {
+            index: "/admin/sliders",
+            store: "/admin/sliders/store",
+            show: "/admin/sliders/{slider_uuid}",
+            destroy: "/admin/sliders/destroy/{slider_uuid}",
+        },
     }
 };
 

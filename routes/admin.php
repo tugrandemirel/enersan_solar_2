@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SiteSetting\ContactSettingController;
 use App\Http\Controllers\Admin\SiteSetting\GeneralSettingController;
 use App\Http\Controllers\Admin\SiteSetting\SiteSettingController;
 use App\Http\Controllers\Admin\SiteSetting\SocialMediaSettingController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,15 @@ Route::middleware('auth')->as("admin.")->group(function () {
         Route::get("/create", [ProjectController::class, "create"])->name("create");
         Route::get("/{project_uuid}", [ProjectController::class, "show"])->name("show");
         Route::delete("/destroy/{project_uuid}", [ProjectController::class, "destroy"])->name("destroy");
+    });
+
+    Route::prefix("sliders")->as("sliders.")->group(callback: function () {
+        Route::any("/", [SliderController::class, "index"])->name("index");
+        Route::post("/store", [SliderController::class, "store"])->name("store");
+        Route::get("/create", [SliderController::class, "create"])->name("create");
+        Route::get("/edit/{slider_uuid}", [SliderController::class, "edit"])->name("edit");
+        Route::get("/{slider_uuid}", [SliderController::class, "show"])->name("show");
+        Route::delete("/destroy/{slider_uuid}", [SliderController::class, "destroy"])->name("destroy");
     });
 
     Route::prefix('site-setting')->as('site_setting.')->group(callback: function (){
