@@ -33,7 +33,7 @@ const routes = {
             index: "/admin/references",
             store: "/admin/references/store",
             show: "/admin/references/{reference_uuid}",
-            destroy: "/admin/sliders/destroy/{reference_uuid}",
+            destroy: "/admin/references/destroy/{reference_uuid}",
         },
     }
 };

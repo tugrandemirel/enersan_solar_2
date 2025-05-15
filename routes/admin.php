@@ -2,14 +2,13 @@
 
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\Project\ProjectController;
+use App\Http\Controllers\Admin\ReferenceController;
 use App\Http\Controllers\Admin\Service\ServiceController;
 use App\Http\Controllers\Admin\SiteSetting\ContactSettingController;
 use App\Http\Controllers\Admin\SiteSetting\GeneralSettingController;
 use App\Http\Controllers\Admin\SiteSetting\SiteSettingController;
 use App\Http\Controllers\Admin\SiteSetting\SocialMediaSettingController;
 use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReferenceController;
 use Illuminate\Support\Facades\Route;
 
 /*

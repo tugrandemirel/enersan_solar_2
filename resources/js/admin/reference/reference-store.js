@@ -1,6 +1,6 @@
 import routes from "@/route";
 
-let btn = KTUtil.getById("delete_service_btn");
+let btn = KTUtil.getById("create_reference_btn");
 
 KTUtil.addEvent(btn, "click", function () {
     btn.disabled = true;
@@ -8,17 +8,17 @@ KTUtil.addEvent(btn, "click", function () {
 
     setTimeout(function () {
 
-        let form = $("#create_service_form")
+        let form = $("#create_reference_form")
         let form_data = new FormData(form[0])
 
-        let url = routes.admin.services.store
+        let url = routes.admin.references.store
 
         axios.post(url, form_data)
             .then(function (response) {
                 if (response.status === 200) {
-                    let { route } = response.data.data
                     success(response)
-                    window.location.href = route
+                    form[0].reset();
+                    $("#fetch_references_datatable").DataTable().ajax.reload();
                 }
             })
             .catch(function (errors) {

@@ -1,10 +1,10 @@
 @extends("admin.layouts.app")
-@section('title', 'Hizmetlerimiz')
+@section('title', 'Referanslarımız')
 @php
-    $servicesToggle = "active";
+    $referencesToggle = "active";
 @endphp
 @push('css')
-    <link href="{{ asset('assets/admin/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css"/>
 @endpush
 @section("content")
     <!--begin::Subheader-->
@@ -15,18 +15,18 @@
 
                 <!--begin::Page Title-->
                 <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">
-                    Hizmetlerimiz
+                    Referanslarımız
                 </h5>
                 <!--end::Page Title-->
 
                 <!--begin::Actions-->
-{{--                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>--}}
+                {{--                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>--}}
 
-{{--                <span class="text-muted font-weight-bold mr-4">#XRS-45670</span>--}}
+                {{--                <span class="text-muted font-weight-bold mr-4">#XRS-45670</span>--}}
 
-{{--                <a href="#" class="btn btn-light-warning font-weight-bolder btn-sm">--}}
-{{--                    Add New--}}
-{{--                </a>--}}
+                {{--                <a href="#" class="btn btn-light-warning font-weight-bolder btn-sm">--}}
+                {{--                    Add New--}}
+                {{--                </a>--}}
                 <!--end::Actions-->
             </div>
             <!--end::Info-->
@@ -35,7 +35,8 @@
             <div class="d-flex align-items-center">
                 <!--begin::Actions-->
 
-                <a href="{{ route("admin.services.create") }}" class="btn btn-light-success font-weight-bolder btn-sm">
+                <a href="#" data-toggle="modal" data-target="#referenceCreateModal"
+                   class="btn btn-light-success font-weight-bolder btn-sm">
                     <i class="fa fa-plus"></i>
                     <span class="d-none d-sm-inline-block">Yeni Ekle</span>
 
@@ -51,16 +52,19 @@
         <!--begin::Body-->
         <div class="card-body bg-white border-bottom border-left border-right p-5">
             <!--begin::Table-->
-            @include("admin.service.partials.fetch-services-datatable")
+            @include("admin.reference.partials.fetch-references-datatable")
         </div>
         <!--end::Body-->
     </div>
     <!--end::Subheader-->
+    @includeIf("admin.reference.partials.reference-create-modal")
 @endsection
 @push("js")
     <script src="{{ asset('assets/admin/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     @vite([
-    "resources/js/admin/service/fetch-services-datatable.js",
-    "resources/js/admin/service/service-destroy.js",
-])
+        "resources/js/admin/reference/fetch-references-datatable.js",
+        "resources/js/admin/reference/reference-store.js",
+        "resources/js/admin/reference/reference-destroy.js",
+        "resources/js/admin/file.js",
+    ])
 @endpush
