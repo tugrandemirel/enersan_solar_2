@@ -53,13 +53,13 @@
                     <li class="nav__item has-dropdown">
                         <a href="{{ route("home") }}" class="nav__item-link active">Anasayfa</a>
                     </li><!-- /.nav-item -->
-                    <li class="nav__item has-dropdown">
+                    {{--<li class="nav__item has-dropdown">
                         <a href="#" class="nav__item-link">Şirketimiz</a>
                         <button class="dropdown-toggle" data-toggle="dropdown"></button>
                         <ul class="dropdown-menu">
-                            <li class="nav__item">
+           --}}{{--                 <li class="nav__item">
                                 <a href="" class="nav__item-link">Hakkımızda</a>
-                            </li><!-- /.nav-item -->
+                            </li><!-- /.nav-item -->--}}{{--
                             <li class="nav__item">
                                 <a href="" class="nav__item-link">Galeri</a>
                             </li>
@@ -67,7 +67,7 @@
                                 <a href="" class="nav__item-link">SSS</a>
                             </li><!-- /.nav-item -->
                         </ul><!-- /.dropdown-menu -->
-                    </li><!-- /.nav-item -->
+                    </li><!-- /.nav-item -->--}}
                     <li class="nav__item has-dropdown">
                         <a href="{{ route("services.index") }}" class="nav__item-link">Hizmetlerimiz</a>
                     </li><!-- /.nav-item -->

@@ -26,14 +26,17 @@ class AppServiceProvider extends ServiceProvider
         View::composer([
             "admin.layouts.app",
             "front.layouts.header",
+            "front.layouts.footer",
         ], GeneralSettingComposer::class);
 
         View::composer([
             "front.layouts.header",
+            "front.layouts.footer",
         ], SocialMediaSettingComposer::class);
 
         View::composer([
             "front.layouts.header",
+            "front.layouts.footer",
             "front.index",
             "front.service.show",
             "front.project.show",
