@@ -35,7 +35,15 @@ const routes = {
             show: "/admin/references/{reference_uuid}",
             destroy: "/admin/references/destroy/{reference_uuid}",
         },
-    }
+    },
+    front: {
+        contact: {
+            store: "/iletisim/",
+        },
+        home: {
+            index: "/",
+        }
+    },
 };
 
 export default routes;

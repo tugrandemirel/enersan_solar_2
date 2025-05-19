@@ -47,8 +47,15 @@ export default defineConfig({
                 "resources/js/admin/reference/reference-store.js",
                 "resources/js/admin/reference/reference-destroy.js",
                 /* END REFERENCE*/
+
+                /* START CUSTOMER CONTACT*/
+                "resources/js/front/contact-store.js",
+                /* END CUSTOMER CONTACT*/
             ],
             refresh: true,
         }),
     ],
+    build: {
+        assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.eot', '**/*.ttf', '**/*.woff', '**/*.woff2', '**/*.svg']
+    },
 });
