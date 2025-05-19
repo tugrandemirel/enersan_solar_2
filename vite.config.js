@@ -13,6 +13,7 @@ export default defineConfig({
                 "resources/js/admin/select2.js",
                 "resources/js/admin/summernote.js",
                 "resources/js/admin/file.js",
+                "resources/js/admin/input-mask.js",
                 /* END GENERAL */
 
                 /*START SITE SETTING */
@@ -26,6 +27,7 @@ export default defineConfig({
                 /* START SERVICE*/
                 "resources/js/admin/service/fetch-services-datatable.js",
                 "resources/js/admin/service/service-store.js",
+                "resources/js/admin/service/service-destroy.js",
                 /* END SERVICE*/
 
                 /* START PROJECT*/
@@ -39,6 +41,12 @@ export default defineConfig({
                 "resources/js/admin/slider/slider-store.js",
                 "resources/js/admin/slider/slider-destroy.js",
                 /* END SLIDER */
+
+                /* START REFERENCE*/
+                "resources/js/admin/reference/fetch-references-datatable.js",
+                "resources/js/admin/reference/reference-store.js",
+                "resources/js/admin/reference/reference-destroy.js",
+                /* END REFERENCE*/
             ],
             refresh: true,
         }),

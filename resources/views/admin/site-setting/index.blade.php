@@ -205,10 +205,8 @@
         "resources/js/route.js",
 
         "resources/js/admin/site-setting/general-setting/update.js",
-        "resources/js/admin/site-setting/general-setting/file.js",
-
         "resources/js/admin/site-setting/contact-setting/update.js",
-
+        "resources/js/admin/site-setting/general-setting/image.js",
         "resources/js/admin/site-setting/social-media-setting/update.js",
         "resources/js/admin/site-setting/social-media-setting/repeater.js",
     ])
