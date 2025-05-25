@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\Custom;
+namespace App\Helper\Custom;
 
 class CustomHelper
 {
