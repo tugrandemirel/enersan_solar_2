@@ -32,14 +32,14 @@
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="post-item">
                             <div class="post__img">
-                                <a href="">
-                                    <img src="{{ $project?->image?->path }}" alt="post image" loading="lazy">
+                                <a href="{{ route("projects.show", ["project_slug" => $project?->slug]) }}">
+                                    <img src="{{ $project?->image?->path }}" alt="{{ $project?->name }}" loading="lazy">
                                 </a>
                                 <span class="post__date">{{ \App\Helper\DateHelper::short($project->created_at) }}</span>
                             </div>
                             <div class="post__body">
                                 <h4 class="post__title">
-                                    <a href="#">{{ $project?->name }}</a>
+                                    <a href="{{ route("projects.show", ["project_slug" => $project?->slug]) }}">{{ $project?->name }}</a>
                                 </h4>
                                 <a href="{{ route("projects.show", ["project_slug" => $project?->slug]) }}" class="btn btn__secondary btn__outlined btn__custom">
                                     <i class="icon-arrow-right"></i>

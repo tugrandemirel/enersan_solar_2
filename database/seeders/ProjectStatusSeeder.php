@@ -20,7 +20,7 @@ class ProjectStatusSeeder extends Seeder
             ],
             [
                 "name" => "Pasif",
-                "code" => "inactive"
+                "code" => "passive"
             ],
         ];
 

@@ -75,7 +75,7 @@ class SlugHelper
         string $slug,
         ?int $ignoreId = null
     ): bool {
-        $query = $model::query()->where($column, $slug);
+        $query = $model::query()->where($column, $slug)->withTrashed();
 
         if ($ignoreId) {
             $query->where('id', '!=', $ignoreId);

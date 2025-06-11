@@ -9,7 +9,7 @@
                         <ul class="contact__list d-flex flex-wrap align-items-center list-unstyled mb-0">
                             <li>
                                 <i class="icon-mail"></i>
-                                <a href="mailto:{{ $contact?->email }}">Email: {{ $contact?->email }}</a>
+                                <a href="mailto:{{ $contact?->emai ?? '' }}">Email: {{ $contact?->email ?? '' }}</a>
                             </li>
                             <li>
                                 <i class="icon-clock"></i>
@@ -43,7 +43,7 @@
     <nav class="navbar navbar-expand-lg sticky-navbar">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route("home") }}">
-                <img src="{{ $general_setting?->logo["path"] }}" class="logo" alt="{{ $general_setting?->site_name }}" style="max-width: 85px">
+                <img src="{{ $general_setting?->logo["path"] ??'' }}" class="logo" alt="{{ $general_setting?->site_name ??'' }}" style="max-width: 85px">
             </a>
             <button class="navbar-toggler" type="button">
                 <span class="menu-lines"><span></span></span>
@@ -84,7 +84,7 @@
             @isset($contact?->phone)
             <div class="contact__number d-none d-xl-flex align-items-center">
                 <i class="icon-phone"></i>
-                <a href="tel:{{ $contact?->phone }}">{{ $contact?->phone }}</a>
+                <a href="tel:{{ $contact?->phone ?? '' }}">{{ $contact?->phone ?? '' }}</a>
             </div>
             @endisset
             <ul class="navbar-actions d-none d-xl-flex align-items-center list-unstyled mb-0">

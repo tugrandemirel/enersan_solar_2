@@ -59,17 +59,18 @@ class ServiceController extends Controller
                 ->whereRelation("serviceStatus", "code", "=", $service_status_active->code)
                 ->where("slug", $service_slug)
                 ->first();
-
+            if (!$service) {
+                abort(404);
+            }
             $other_services = Service::query()
                 ->select("name", "slug")
                 ->whereRelation("serviceStatus", "code", "=", $service_status_active->code)
-                ->where("slug", "!=", $service_slug)
+                ->where("slug", "!=", $service?->slug)
                 ->take(6)
                 ->get();
 
             return view(self::PATH."show", compact("service", "other_services"));
         } catch (\Exception $exception) {
-            dd($exception->getMessage());
             abort(404);
         }
     }

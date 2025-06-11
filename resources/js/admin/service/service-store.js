@@ -1,6 +1,6 @@
 import routes from "@/route";
 
-let btn = KTUtil.getById("delete_service_btn");
+let btn = KTUtil.getById("create_service_btn");
 
 KTUtil.addEvent(btn, "click", function () {
     btn.disabled = true;

@@ -32,7 +32,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="post-item">
                             <div class="post__img">
-                                <a href="">
+                                <a href="{{ route("services.show", ["service_slug" => $service?->slug]) }}">
                                     <img src="{{ $service?->image?->path }}" alt="post image" loading="lazy">
                                 </a>
                                 <span class="post__date">{{ \App\Helper\DateHelper::short($service->created_at) }}</span>

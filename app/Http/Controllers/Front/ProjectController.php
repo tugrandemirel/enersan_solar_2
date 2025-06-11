@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\ProjectStatus;
-use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProjectController extends Controller
@@ -60,17 +59,18 @@ class ProjectController extends Controller
                 ->whereRelation("projectStatus", "code", "=", $project_status_active->code)
                 ->where("slug", $project_slug)
                 ->first();
-
+            if (!$project) {
+                abort(404);
+            }
             $other_projects = Project::query()
                 ->select("name", "slug")
                 ->whereRelation("projectStatus", "code", "=", $project_status_active->code)
-                ->where("slug", "!=", $project_slug)
+                ->where("slug", "!=", $project?->slug)
                 ->take(6)
                 ->get();
 
             return view(self::PATH."show", compact("project", "other_projects"));
         } catch (\Exception $exception) {
-            dd($exception->getMessage());
             abort(404);
         }
     }

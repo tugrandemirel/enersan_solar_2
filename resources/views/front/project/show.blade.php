@@ -14,10 +14,10 @@
                 <div class="col-sm-12 col-md-12 col-lg-6">
                     <h1 class="pagetitle__heading mb-0">{{ $project?->name }}</h1>
                     <div class="d-flex align-items-center mt-30">
-                        <a href="request-quote.html" class="btn btn__primary mr-30">
+                        <a href="{{ route("contacts.index") }}" class="btn btn__primary mr-30">
                             <i class="icon-arrow-right"></i> <span>İletişime Geç</span>
                         </a>
-                        <a href="about-us.html" class="btn btn__white">Hakkımızda</a>
+{{--                        <a href="about-us.html" class="btn btn__white">Hakkımızda</a>--}}
                     </div>
                 </div><!-- /.col-12 -->
             </div><!-- /.row -->
@@ -78,7 +78,7 @@
                                 </a>
                                 <div class="contact__number d-none d-xl-flex align-items-center">
                                     <i class="icon-phone"></i>
-                                    <a href="tel:{{ $contact?->phone }}">{{ $contact?->phone }}</a>
+                                    <a href="tel:{{ $contact?->phone ?? '' }}">{{ $contact?->phone ?? '' }}</a>
                                 </div>
                             </div>
 
